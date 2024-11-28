@@ -200,7 +200,7 @@ class ExpBase:
 
         submit_df = pd.DataFrame({
             'id': self.id,  # 'id'カラムを追加
-            'not.fully.paid': y_test_pred_all  # 'not.fully.paid'カラムを追加
+            'y': y_test_pred_all  # 'y'カラムを追加
         })
 
         # print(submit_df)
