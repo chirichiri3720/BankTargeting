@@ -9,7 +9,7 @@ defaults:
   - _self_
   - data: base
   - model: catboost
-  - exp: optuna
+  - exp: simple
 
 n_splits: 15
 metrics: AUC

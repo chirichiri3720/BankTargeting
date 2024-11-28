@@ -25,7 +25,7 @@ class TabularDataFrame(object):
     continuous_columns = []
     categorical_columns = []
     binary_columns = []
-    target_column = "not.fully.paid"
+    target_column = "y"
 
     def __init__(
         self,
@@ -166,38 +166,28 @@ class TabularDataFrame(object):
 
 class V0(TabularDataFrame):
     continuous_columns = [
-        "int.rate",
-        # "installment",
-        # "annual.inc",
-        "dti",
-        # "fico",
-        # "days.with.cr.line",
-        # "revol.bal",
-        # "revol.util",
-        "inq.last.6mths",
-        # "delinq.2yrs",
-        # "pub.rec",
-        'fico_plus_revol.util',
-        'fico_minus_revol.util',
-        'fico_multiplied_by_revol.util',
-        'fico_divided_by_revol.util',
-        'fico_mean_revol.util',
-        'fico_median_revol.util',
-        'fico_q75_revol.util',
-        'fico_q25_revol.util',
-        'fico_zscore_f1_revol.util',
-        'fico_plus_int.rate',
-        'fico_minus_int.rate',
-        'fico_multiplied_by_int.rate',
-        'fico_divided_by_int.rate',
-        'fico_mean_int.rate',
-        'fico_median_int.rate',
-        'fico_q75_int.rate',
-        'fico_q25_int.rate',
-        'fico_zscore_f1_int.rate',
+       "age",
+       "balance",
+       "day",
+       "duration",
+       "pdays",
+       "previous",
+
     ]
     categorical_columns = [
-        "purpose",
+        "job",
+        "marital",
+        # "default",
+        "housing",
+        "loan",
+        "contact",
+        "month",
+        "poutcome",
+        'campaign',
+        "campaign_1",
+        "campaign_2",
+        "campaign_3",
+        "campaign_4over"
     ]
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
@@ -205,131 +195,3 @@ class V0(TabularDataFrame):
         # self.train[self.target_column] = self.label_encoder.transform(self.train[self.target_column])
         self.test = pd.read_csv(to_absolute_path("datasets/test_fix.csv"))
 
-class V1(TabularDataFrame):
-    continuous_columns = [
-        "int.rate",
-        "installment",
-        # "annual.inc",
-        "dti",
-        # "fico",
-        "days.with.cr.line",
-        "revol.bal",
-        "revol.util",
-      
-        'installment_plus_annual.inc',
-        'installment_minus_annual.inc',
-        'installment_multiplied_by_annual.inc',
-        'installment_divided_by_annual.inc',
-        'installment_q75_annual.inc',
-        'installment_zscore_f1_annual.inc',
-
-        'fico_minus_revol.util',
-        'fico_divided_by_revol.util',
-        'fico_median_revol.util',
-        'fico_q75_revol.util',
-        'fico_q25_revol.util',
-        'fico_zscore_f1_revol.util',
-
-        'fico_minus_int.rate',
-        'fico_multiplied_by_int.rate',
-        'fico_divided_by_int.rate',
-        'fico_mean_int.rate',
-        'fico_zscore_f1_int.rate',
-        
-        'int.rate_plus_revol.util',
-        'int.rate_minus_revol.util',
-        'int.rate_multiplied_by_revol.util',
-        'int.rate_divided_by_revol.util',
-        'int.rate_q75_revol.util',
-        'int.rate_q25_revol.util',
-        'int.rate_zscore_f1_revol.util',
-
-      
-    ]
-    categorical_columns = [
-        'delinq.2yrs_0', 
-        'delinq.2yrs_1',
-        'delinq.2yrs_2',
-        'delinq.2yrs_3over',
-        'pub.rec_0', 
-        'pub.rec_1',
-        'inq_bin_div_0',
-        'inq_bin_div_1',
-        'inq_bin_div_2',
-        'inq_bin_div_3',
-        'inq_bin_div_4-',
-
-        'installment_0-100',
-        'installment_100-200',
-        'installment_200-300',
-        'installment_300-400',
-        'installment_400-600',
-        'installment_600-800',
-        'installment_800over',
-
-        # 'dti_0-5',
-        # # 'dti_5-10',
-        # # 'dti_10-15',
-        # # 'dti_15-20',
-        # # 'dti_20-25',
-        # 'dti_0-5',
-        # 'dti_5-20',
-        # 'dti_20-25',
-        # 'dti_25over',
-        # # 'dti_25over',
-
-        'int.rate_0',
-        'int.rate_0_05',
-        'int.rate_005_01',
-        'int.rate_01_015',
-        'int.rate_015_02',
-        'int.rate_02_025',
-        'int.rate_025over',
-
-        'annual_0-20t',
-        'annual_20t-40t',
-        'annual_40t-60t',
-        'annual_60t-80t',
-        'annual_80t-100t',
-        'annual_100t-120t',
-        'annual_120t-140t',
-        'annual_140t-',
-
-        'fico_0-650',
-        'fico_650-675',
-        'fico_675-700',
-        'fico_700-725',
-        'fico_725-750',
-        'fico_750-775',
-        'fico_775-800',
-        'fico_800-',
-
-        'days_0-2500',
-        'days_2500-5000',
-        'days_5000-10000',
-        # 'days_10000-15000',
-        'days_10000-',
-
-        'revol.bal0-5000',
-        'revol.bal5000-10000',
-        'revol.bal10000-15000',
-        'revol.bal15000-20000',
-        'revol.bal20000-',
-    
-        'revol.util0-20',
-        'revol.util20-40',
-        'revol.util40-60',
-        'revol.util60-80',
-        'revol.util80-100',
-        'revol.util100-',
-        
-
-
-
-        'purpose',
-    ]
-    def __init__(self, **kwargs) -> None:
-        super().__init__(**kwargs)
-        self.train = pd.read_csv(to_absolute_path("datasets/train_fix.csv"))
-        # self.train[self.target_column] = self.label_encoder.transform(self.train[self.target_column])
-        self.test = pd.read_csv(to_absolute_path("datasets/test_fix.csv"))
