@@ -1,0 +1,10 @@
+depth: 6
+iterations: 10000
+learning_rate: null
+random_strength: null
+bagging_temperature: null
+# subsample: null
+# colsample_bylevel: null
+# l2_leaf_reg: null
+
+od_type: 'Iter'
